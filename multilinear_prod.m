@@ -8,9 +8,9 @@ sn = size(x);
 p = prod(sn(3:end));
 % build string for indexing higher dimensions of x
 % what happens when x is more than three dimensions??? 
-str = sprintf([repmat('x(:,:,%d), ',[1 p-1]) 'x(:,:,%d)'], 1:p);
+str = tall(sprintf([repmat('x(:,:,%d), ',[1 p-1]) 'x(:,:,%d)'], 1:p));
 % Build sparse block matrix
-test = eval(['sparse(blkdiag(' str '))']);
+test = tall(eval(['sparse(blkdiag(' str '))']));
 % reshape to preserve columnwise order per page. 
 RHS = reshape(permute(RHS, [1 3 2]), size(RHS,1)*size(RHS,3), size(RHS,2));
 X = test*RHS;
