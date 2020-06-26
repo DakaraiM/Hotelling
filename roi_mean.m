@@ -1,4 +1,4 @@
-function m = roi_mean(vol, labelvol, roi, rmzeros)
+function m = roi_mean(vol, labelvol, roi, rmzeros, mask)
 % author: choisoyo@usc.edu
 % modified by : dakaraim@usc.edu
 % Loads the ROI only for that subject
@@ -6,6 +6,12 @@ function m = roi_mean(vol, labelvol, roi, rmzeros)
 if ~exist('rmzeros')
     rmzeros = 0;
 end
+
+if ~exist('mask')
+    mask = 0;
+end
+
+
 
 
 for i = 1:size(roi,1)
