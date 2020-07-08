@@ -2,8 +2,8 @@ function ax = plot_ROI_dist(x,y,z,roi)
 % x,y,and z are scalars
 dirname = '\\hippocampus.usc.edu\SocialDevelopmentProject\fMRI\BrainSuite\Stats\subject_session';
 
-% get atlas label volume
-label = 'C:\Program Files\BrainSuite19b\svreg\BCI-DNI_brain_atlas\BCI-DNI_brain.label.nii.gz';
+% get atlas label volume - use the lobes label. 
+label = '\\hippocampus.usc.edu\SocialDevelopmentProject\fMRI\BrainSuite\Stats\subject_session\BCI-DNI_brain.lobes.customGW.label.nii';
 label_vol = load_untouch_nii(label);
 
 % get statistical roi volume
@@ -36,7 +36,7 @@ wave2 = com(contains(com,'_02'));
 
 
 for sub =1:length(wave1)
-    fname_dJac = sprintf('%s\\%s\\%s.svreg.inv.jacobian.smooth1.0mm.nii.gz',dirname,wave1{sub},wave1{sub});
+    fname_dJac = sprintf('%s\\%s\\%s.svreg.inv.jacobian.smooth3.1mm.nii.gz',dirname,wave1{sub},wave1{sub});
     
     if exist(fname_dJac, 'file')
         djac = load_untouch_nii(fname_dJac);
